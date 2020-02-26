@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp48
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] biba = { 4, 6, 9, 12, 5, 9, 6, 8, 11 };
+            Predicate<int> predicate = (int x) => { return x > 8; };
+            //BibaPredict(biba, x=>x>8)
+            biba.BibaPredict<int>(predicate);
+        }
+    }
+    static class ragu
+    {
+        public static IEnumerable<T> BibaPredict<T>(this IEnumerable<T> Pipa ,Predicate<T> predicate)
+        {
+            if (predicate == null) yield break;
+            foreach(T x in Pipa)
+            {
+                if (predicate(x)) yield return x;
+            }
+
+        }
+    }
+}
